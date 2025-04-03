@@ -33,7 +33,6 @@ mod_body_1_overview_ui <- function(id) {
           card_body(
             layout_column_wrap(
               width = 1/2,
-              plotOutput(outputId = ns("plot")),
               markdown("### Title
           This famous (Fisher's or Anderson's) **iris data** set gives the measurements in
             centimeters of the variables sepal length and width and petal length and width,
@@ -115,14 +114,6 @@ mod_body_1_overview_ui <- function(id) {
 mod_body_1_overview_server <- function(id, display, button){
   moduleServer(id, function(input, output, session){
     ns <- session$ns
-
-    output$plot <- renderPlot({
-
-      iris |>
-        ggplot2::ggplot(ggplot2::aes(x = Sepal.Length, y = Sepal.Width)) +
-        ggplot2::geom_point() +
-        ggplot2::theme_minimal()
-    })
 
     onclick(id = "base_model",  expr = button$increment_base_model()  )
     onclick(id = "fine_tuning", expr = button$increment_fine_tuning() )
