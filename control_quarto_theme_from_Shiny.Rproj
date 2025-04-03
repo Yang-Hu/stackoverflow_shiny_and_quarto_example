@@ -1,4 +1,5 @@
 Version: 1.0
+ProjectId: 0a8032c6-6139-49ae-88b8-94d7d6e856f2
 
 RestoreWorkspace: Default
 SaveWorkspace: Default
@@ -14,3 +15,7 @@ LaTeX: pdfLaTeX
 
 AutoAppendNewline: Yes
 StripTrailingWhitespace: Yes
+
+BuildType: Package
+PackageUseDevtools: Yes
+PackageInstallArgs: --no-multiarch --with-keep.source
