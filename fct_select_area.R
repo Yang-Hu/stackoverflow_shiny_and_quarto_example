@@ -1,11 +1,44 @@
-#' Logic for selecting functional areas when value boxes are clicked: after the first click, a nested UI will be
-#' inserted. All nested UIs are initially hidden, and if a UI is present and the user clicks again, they will be
-#' directed to the clicked UI.
-#' @importFrom shiny observeEvent
-#' @importFrom gargoyle watch
-#' @importFrom bslib nav_insert nav_panel nav_select
-#'
-#' @noRd
+functional_areas <- R6Class(
+
+  classname = "functional_areas",
+
+  # 1. Define the initial values ---------------------------------------------------------------------------------------
+
+  public = list(
+    base_model  = 0,
+    fine_tuning = 0,
+    efpmpedia   = 0,
+
+
+    # 2. Initialise the unique IDs -------------------------------------------------------------------------------------
+
+    initialize = \() {
+      init("base_model_click")
+      init("fine_tuning_click")
+      init("efpmpedia_click")
+    },
+
+
+    # 3. Define the increment_ functions -------------------------------------------------------------------------------
+
+    increment_base_model = function() {
+      self$base_model  <- self$base_model + 1
+      trigger("base_model_click")
+    },
+
+    increment_fine_tuning = function() {
+      self$fine_tuning <- self$fine_tuning + 1
+      trigger("fine_tuning_click")
+    },
+
+    increment_efpmpedia = function() {
+      self$efpmpedia   <- self$efpmpedia + 1
+      trigger("efpmpedia_click")
+    }
+  )
+)
+
+
 
 select_function_area <- function(function_area, base_model_ui, fine_tuning_ui, efpmpedia_ui) {
 

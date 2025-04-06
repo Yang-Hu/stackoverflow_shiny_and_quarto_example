@@ -26,28 +26,6 @@ mod_body_1_overview_ui <- function(id) {
       heights_equal = "row",
 
 
-      layout_column_wrap(
-
-        card(
-          card_header("Introduction"),
-          card_body(
-            layout_column_wrap(
-              width = 1/2,
-              markdown("### Title
-          This famous (Fisher's or Anderson's) **iris data** set gives the measurements in
-            centimeters of the variables sepal length and width and petal length and width,
-            respectively, for 50 flowers from each of 3 species of iris. The species are Iris
-            setosa, versicolor, and virginica.")
-            )
-          )
-        )
-
-      ),
-
-
-
-      # Colour combination comes from: https://bslib.shinyapps.io/build-a-box/
-
       card(
 
         card_header(
@@ -71,8 +49,7 @@ mod_body_1_overview_ui <- function(id) {
               showcase        = bs_icon(name = "circle"),
               showcase_layout = "left center",
               value           = "Base Model",
-              title           = " ",
-              markdown(paste0("Built on the latest data.")),
+              title           = " "),
 
               full_screen     = FALSE,
               style           = "cursor: pointer;"),
@@ -84,7 +61,7 @@ mod_body_1_overview_ui <- function(id) {
               showcase_layout = "left center",
               value           = "Fine-Tuning",
               title           = " ",
-              markdown("Modify the base model levers and compare different scenarios to the baseline."),
+              markdown("Modify the base model and compare different scenarios to the baseline."),
 
               full_screen     = FALSE,
               style           = "cursor: pointer;"),
@@ -105,13 +82,10 @@ mod_body_1_overview_ui <- function(id) {
         )
       )
     )
-  )
 }
 
-#' ui_2_1_overview Server Functions
-#'
-#' @noRd
-mod_body_1_overview_server <- function(id, display, button){
+
+mod_body_1_overview_server <- function(id, button){
   moduleServer(id, function(input, output, session){
     ns <- session$ns
 
